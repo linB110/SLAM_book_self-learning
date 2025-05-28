@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/cordTransform.dir/cordTransform.cpp.o  -o cordTransform 

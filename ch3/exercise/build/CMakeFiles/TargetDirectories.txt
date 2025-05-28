@@ -1,3 +1,0 @@
-/home/lab605/SLAM/ch3/exercise/build/CMakeFiles/rebuild_cache.dir
-/home/lab605/SLAM/ch3/exercise/build/CMakeFiles/edit_cache.dir
-/home/lab605/SLAM/ch3/exercise/build/CMakeFiles/cordTransform.dir

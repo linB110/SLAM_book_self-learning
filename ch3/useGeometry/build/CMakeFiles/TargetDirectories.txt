@@ -1,3 +1,0 @@
-/home/lab605/SLAM/ch3/useGeometry/build/CMakeFiles/rebuild_cache.dir
-/home/lab605/SLAM/ch3/useGeometry/build/CMakeFiles/edit_cache.dir
-/home/lab605/SLAM/ch3/useGeometry/build/CMakeFiles/useGeometry.dir
