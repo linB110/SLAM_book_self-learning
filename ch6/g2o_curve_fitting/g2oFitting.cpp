@@ -7,10 +7,14 @@
 #include <g2o/core/base_unary_edge.h>
 #include <g2o/core/block_solver.h>
 #include <g2o/core/optimization_algorithm_levenberg.h>
+#include <g2o/core/optimization_algorithm_gauss_newton.h>
+#include <g2o/core/optimization_algorithm_dogleg.h>
 #include <g2o/solvers/dense/linear_solver_dense.h>
 
 #include <Eigen/Core>
 #include <opencv2/core/core.hpp>
+
+#include <memory>
 
 using namespace std;
 
@@ -74,9 +78,22 @@ int main(int argc, char** argv) {
     typedef g2o::BlockSolver<g2o::BlockSolverTraits<3, 1>> Block; // 3 params, 1 error
     typedef g2o::LinearSolverDense<Block::PoseMatrixType> LinearSolver;
 
-    auto solver = new g2o::OptimizationAlgorithmLevenberg(
-        std::make_unique<Block>(std::make_unique<LinearSolver>())
-    );
+    auto linearSolver = std::make_unique<LinearSolver>();
+    auto blockSolver = std::make_unique<Block>(std::move(linearSolver));
+
+    // Levenberg solver
+    //auto solver = new g2o::OptimizationAlgorithmLevenberg(
+    //    std::make_unique<Block>(std::make_unique<LinearSolver>())
+    //);
+     
+    // Dogleg solver
+    //auto solver = new g2o::OptimizationAlgorithmDogleg(std::move(blockSolver));
+     
+    // G-N solver
+    auto solver = new g2o::OptimizationAlgorithmGaussNewton(
+      std::make_unique<Block>(std::make_unique<LinearSolver>()) 
+    ); 
+
 
     g2o::SparseOptimizer optimizer;
     optimizer.setAlgorithm(solver);
