@@ -34,6 +34,8 @@ int main(int argc, char** argv)
     Mat outImg1;
     drawKeypoints(img1, keypoints_1, outImg1, Scalar::all(-1), DrawMatchesFlags::DEFAULT);
     imshow("ORB feature points", outImg1);
+    imwrite("out_keypoints.png", outImg1);
+    waitKey(0);
     
     // match descriptors from img1 and img2, use Hamming distance
     vector<DMatch> matches;
@@ -68,7 +70,9 @@ int main(int argc, char** argv)
     drawMatches ( img1, keypoints_1, img2, keypoints_2, good_matches, img_goodMatch );
     
     imshow( "all matches", img_match);
+    imwrite("all_matches.png", img_match);
     imshow("Optimized", img_goodMatch);
+    imwrite("out_good_matches.png", img_goodMatch);
     waitKey(0);
     
     return 0;
