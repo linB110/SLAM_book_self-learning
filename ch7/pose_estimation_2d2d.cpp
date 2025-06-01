@@ -13,7 +13,7 @@ void find_feature_matches (
     const Mat& img1, const Mat& img2,
     std::vector<KeyPoint>& keypoints_1,
     std::vector<KeyPoint>& keypoints_2,
-    std::vector<DMatch>& matches) ;
+    std::vector<DMatch>& matches);
     
 void pose_estimation_2d2d (
     std::vector<KeyPoint> &keypoints_1,
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 {
     if (argc != 3)
     {
-        cout << "usage: pose_estimation img1 img2 " << endl;
+        cout << "usage: pose_estimation_2d2d img1 img2 " << endl;
         return 1;
     }
     
@@ -38,7 +38,6 @@ int main(int argc, char** argv)
     
     vector<KeyPoint> keypoints_1, keypoints_2;
     vector<DMatch> matches;
-    
     find_feature_matches ( img1, img2, keypoints_1, keypoints_2, matches );
     cout << "found " << matches.size() << " matched point" << endl;
     
